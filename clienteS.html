@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Datos</title>
+</head>
+<body>
+    <h1>Formulario de Datos</h1>
+    <form action="procesar.php" method="POST">
+        <label for="cedula">Cédula del Cliente:</label>
+        <input type="text" id="cedula" name="cedula" required><br><br>
+        
+        <label for="referencia">Número de Referencia:</label>
+        <input type="text" id="referencia" name="referencia" required><br><br>
+        
+        
+        <img src="img.jpg" alt="Imagen"><br><br>
+        
+        <input type="hidden" id="imagen" name="imagen" value="img.jpg">
+        
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
