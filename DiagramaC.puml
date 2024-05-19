@@ -1,0 +1,64 @@
+@startuml
+class Usuario {
+  - nombre: String
+  - contraseña: String
+}
+
+class NuevaRefe {
+  - descripcion: String
+  - valor: Float
+  - cedulaCliente: String
+}
+
+class Ordenes {
+  - listaDeOrdenes: Arraylist
+  - estadoDeOrden: String
+}
+
+class Listado {
+  - referencia: String
+  - estado: String
+  - cliente: Cliente
+}
+
+class InicioCliente {
+  - cedula: String
+  - numeroReferencia: String
+}
+
+class Proceso {
+  - referencia: String
+  - valor: Float
+  - correo: String
+  - cedula: String
+}
+
+class ProcesoPago {
+  - tarjeta: String
+  - fechaExpiracion: Date
+  - ccv: String
+}
+
+class Pago {
+  - fecha: Date
+  - hora: String
+  - referencia: String
+  - valor: Float
+  - cedula: String
+}
+
+
+Usuario --|> NuevaRefe : Realiza
+Usuario --|> Listado : Consulta
+Usuario --o Ordenes : Gestiona
+
+InicioCliente --|> Proceso : Inicia
+InicioCliente --o Ordenes : Gestiona
+
+Proceso --|> ProcesoPago : RealizaPago
+ProcesoPago --o Pago : Genera
+
+
+
+@enduml
+

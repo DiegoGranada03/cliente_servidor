@@ -1,0 +1,40 @@
+@startuml
+
+left to right direction
+
+skinparam rectangle { 
+  RoundCorner 150
+}
+
+actor Gerente
+actor Cliente
+Database Ayudantes{
+  actor vendedor
+}
+Rectangle "GameBox" {
+  usecase "Pagar referencia" as PagarReferencia
+  usecase "Generar referencia" as GenerarReferencia
+  usecase "Cancelar referencia" as CancelarReferencia
+  usecase "Controlar pedidos" as ControlarPedidos
+  usecase "Visualizar Pedidos" as VisualizarPedidos
+  usecase "Emitir factura" as EmitirFactura 
+  
+  Cliente -up->PagarReferencia
+  Cliente -up->CancelarReferencia
+  Cliente -up->VisualizarPedidos
+  Cliente -up->EmitirFactura
+
+  vendedor -up-> GenerarReferencia
+  vendedor -up-> CancelarReferencia
+  vendedor -up-> ControlarPedidos
+  vendedor -up-> VisualizarPedidos
+
+  Gerente -->PagarReferencia
+  Gerente -->CancelarReferencia
+  Gerente -->VisualizarPedidos
+  Gerente -->EmitirFactura
+  Gerente --> GenerarReferencia
+  Gerente --> ControlarPedidos
+}
+
+@enduml
