@@ -1,0 +1,26 @@
+@startuml
+
+actor Comprador as comprador
+boundary "Interfaz de Usuario" as interfazUsuario
+boundary "Servicio de Referencias" as servicioReferencias
+entity Referencia as referencia
+boundary "Interfaz de Cliente" as interfazCliente
+boundary "Interfaz de Gerente" as interfazGerente
+boundary "Modificar referencia" as modificarReferencia
+control "Obtener información de la referencia" as obtenerInfoReferencia
+control "Guardar cambios en la referencia" as guardarCambiosReferencia
+usecase (Generar factura) as generarFactura
+entity Factura as factura
+
+comprador -> interfazUsuario : Accede al sistema
+interfazUsuario -up-> interfazUsuario : Ingresa referencia de compra
+interfazUsuario --> servicioReferencias : Solicita información de la referencia
+referencia -> obtenerInfoReferencia : Obtiene información de la referencia
+obtenerInfoReferencia -down-> interfazCliente : Muestra detalles al comprador
+obtenerInfoReferencia -down-> interfazGerente : Muestra detalles al gerente
+interfazUsuario -> modificarReferencia : Solicita modificar la referencia
+modificarReferencia -> guardarCambiosReferencia : Guarda los cambios en la referencia
+guardarCambiosReferencia -down-> generarFactura : Genera la factura
+guardarCambiosReferencia -> factura : Almacena la factura
+
+@enduml

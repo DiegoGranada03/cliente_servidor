@@ -1,0 +1,20 @@
+@startuml
+
+actor usuario as usuario
+boundary "Interfaz de Usuario" as interfazUsuario
+control "Inicia sesion" as iniciaSesion
+control "Registra Listados" as registraListados 
+control "Ingresa datos venta" as ingresarDatosVenta
+control "Genera nueva referencia" as generaNuevaReferencia
+control "Validar referencia" as validarReferencia
+boundary "Mostrar mensaje de confirmación" as mensajeConfirmacion
+
+interfazUsuario -down-> iniciaSesion : Inicia sesion
+iniciaSesion -down-> registraListados : Se registran listados Refe
+iniciaSesion -down-> ingresarDatosVenta : Ingresar datos de la venta
+ingresarDatosVenta -down-> generaNuevaReferencia : Se genera nueva refe
+generaNuevaReferencia -down-> validarReferencia : Se valida referencia  
+ingresarReferencia -down-> validarReferencia : Valida referencia
+validarReferencia -down-> mensajeConfirmacion: Muestra confirmación de compra
+
+@enduml

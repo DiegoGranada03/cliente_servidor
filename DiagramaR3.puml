@@ -1,0 +1,13 @@
+@startuml
+
+actor Vendedor as Vendedor
+boundary "Interfaz de Usuario" as interfazUsuario
+control "Validación de datos" as validacionDatos
+control "Gestión de sesiones" as gestionSesiones
+
+Vendedor -> interfazUsuario : Accede al sistema
+interfazUsuario -> validacionDatos : Verifica datos de usuario
+validacionDatos -> baseDatos : Consulta datos de usuario
+interfazUsuario -> gestionSesiones : Inicia sesión
+
+@enduml
